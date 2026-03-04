@@ -1,10 +1,15 @@
 from flask import Flask
-
+from Configs.Queries import *
 app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return '<h1>We should get to this landing page</h1>'
+    names = retrieve_names()
+
+    page_contents = ""
+
+    page_contents += f"<h1>{names}</h1><br>"
+    return page_contents
 
 if __name__ == '__main__':
     app.run()
